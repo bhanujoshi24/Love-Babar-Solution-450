@@ -1,0 +1,19 @@
+import java.util.Date;
+
+public class Reverse {
+  public static void reversearray(int []arr){
+    int i=arr.length-1;
+    for(;i>=arr.length/2;i--){
+      int c=arr[i];
+      arr[i]=arr[arr.length-1-i];
+      arr[arr.length-1-i]=c;
+    }
+    for(int a:arr){
+      System.out.print(a+" ");
+    }
+  }
+    public static void main(String[] args) {
+        int []arr= {4,3,2,1,5};
+        reversearray(arr);
+    }
+}
