@@ -1,0 +1,28 @@
+package pattern;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.PriorityQueue;
+public class KthSmallestArray {
+	public static void main(String[] args) {
+//		Priority Queue is used to defined heap 
+		PriorityQueue<Integer> heap = new PriorityQueue<Integer>();
+		
+		int k=3;
+		int arr[] = {7,10,4,3,20,15};
+		int arrlen = arr.length-1;
+		System.out.println(getkthsmallestelement(arr,arrlen,heap,k));
+	}
+
+	private static int getkthsmallestelement(int[] arr, int len, PriorityQueue<Integer> heap,int k) {
+		// TODO Auto-generated method stub
+		for(int a :arr) {
+			if(heap.size()>k) {
+//				Removed poll element
+				System.out.println("removed "+heap.poll());
+			}
+			heap.add(a);
+		}
+		return heap.peek();
+	}
+}
