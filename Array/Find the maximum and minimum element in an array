@@ -1,0 +1,69 @@
+package pattern;
+class Minmax{
+	int min,max;
+	Minmax(){
+		min = Integer.MAX_VALUE;
+		max = Integer.MIN_VALUE;
+	}
+	
+}
+public class MinMaxArray {
+
+	public static void main(String[] args) {
+		Minmax m = new Minmax();
+		int arr[] = {2,3,4,4,5,6,9};
+		int arr_length = arr.length;
+		m = minmax(arr, 0, arr_length-1);
+		for(int a:arr) {
+			System.out.print(a+" ");
+		}
+		System.out.println();
+		System.out.println("Min= "+m.min+" Max = "+m.max);
+	}
+
+	private static Minmax minmax(int[] arr, int low, int high) {
+		
+		Minmax minmx = new Minmax(); //To return an final answer
+		Minmax mml = new Minmax(); // To get left half minmax
+		Minmax mmr = new Minmax(); // to get right half minmax
+//		calculating mid of an array
+		int mid = (low+high)/2;
+//		Base case for 1 element in an array
+		if(low == high) {
+			minmx.min = minmx.max = arr[low];
+			return minmx;  // minmax will be single elemnt 
+		}
+//		Base Case for an 2 elemnt in an array
+		if(low == high+1) {
+//			if two element are there get and return minmax
+			if(arr[low]>arr[high]) {
+				minmx.max = arr[low];
+				minmx.min = arr[high];
+			}else {
+				minmx.max = arr[high];
+				minmx.min = arr[low];
+			}
+			return minmx;
+		}
+		
+//		Get the left and right half of an array 
+		mml = minmax(arr, low, mid);
+		mmr = minmax(arr, mid+1, high);
+//		Get min element of left and right half 
+		if(mml.min>mmr.min) {
+			minmx.min = mmr.min;
+		}else {
+			minmx.min = mml.min;
+		}
+//		Get max element of left and right half
+		if (mml.max > mmr.max ) {
+			minmx.max = mml.max;
+		}else {
+			minmx.max = mmr.max;
+		}
+//		return the answer
+		return minmx;
+	}
+
+
+}
