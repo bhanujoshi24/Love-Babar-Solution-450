@@ -1,0 +1,29 @@
+package pattern;
+
+public class MoveNegativeElement {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {  2, -3, 4, 5, 6, -7, 8, 9 };
+		moveele(arr,arr.length);
+		for (int a : arr) {
+			System.out.print(a+" ");
+		}
+	}
+
+	private static void moveele(int[] arr, int length) {
+		// TODO Auto-generated method stub
+		int j=0; // j=0 in order to set pointer at initial 
+		for(int i=0;i<length;i++) {
+//			if i found negative element i'll just swap it with the element at j index
+			if(arr[i]<0) {
+				int c = arr[i];
+				arr[i] = arr[j];
+				arr[j] = c;
+				j++;
+			}
+		}
+	}
+
+}
